@@ -1,9 +1,12 @@
 {
-    "identifier": "org.OpenInFork",
+    "identifier": "com.gwhobbs.OpenInFork",
     "name": "Open in Fork",
     "organization": "Grant Hobbs",
-    "description": "Quickly view file history in Fork.",
+    "description": "Quickly view file history in the Fork Git client.",
     "version": "1.0",
+    "repository": "https://github.com/gwhobbs/OpenInFork.novaextension",
+    "bugs": "https://github.com/gwhobbs/OpenInFork.novaextension/issues",
+    "license": "MIT",
     "categories": ["commands"],
     
     "main": "main.js",

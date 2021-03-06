@@ -26,4 +26,4 @@ To set keyboard shortcuts for any of the above commands, use Nova’s [key bindi
 
 #### Attribution
 
-The Fork icon is borrowed from the Fork app.
+The Fork icon is borrowed from the Fork app and is property of Danil Pristupov.
