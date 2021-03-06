@@ -1,4 +1,4 @@
-This extension provides integration with the [**Fork**](https://git-fork.com) Git client. It is an unofficial extension, not approved by the developers of Fork, and is based on the [**Sublime Merge Nova extension**](https://github.com/natesilva/SublimeMerge.novaextension) by Nate Silva.
+This extension provides integration with the [**Fork**](https://git-fork.com) Git client. It is an unofficial extension, not made or endorsed by the developers of Fork, and is based on the [**Sublime Merge Nova extension**](https://github.com/natesilva/SublimeMerge.novaextension) by Nate Silva.
 
 ![Usage illustration](https://raw.githubusercontent.com/gwhobbs/OpenInFork.novaextension/master/readmeIllustration.png)
 
