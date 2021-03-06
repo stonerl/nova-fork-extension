@@ -1,0 +1,31 @@
+{
+    "identifier": "org.OpenInFork",
+    "name": "Open in Fork",
+    "organization": "MyOrganization",
+    "description": "Lorem ipsum, dolor sit amet.",
+    "version": "1.0",
+    "categories": ["commands"],
+    
+    "main": "main.js",
+    
+    "activationEvents": [
+        "onLanguage:javascript"
+    ],
+    
+    "entitlements": {
+        "process": true
+    },
+    
+    "commands": {
+        "editor": [
+            {
+                "title": "Open Repository",
+                "command": "open-in-fork.openRepository"
+            },
+            {
+                "title": "Show File History",
+                "command": "open-in-fork.fileHistory"
+            }
+        ]
+    }
+}
