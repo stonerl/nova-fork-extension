@@ -1,8 +1,8 @@
 {
     "identifier": "org.OpenInFork",
     "name": "Open in Fork",
-    "organization": "MyOrganization",
-    "description": "Lorem ipsum, dolor sit amet.",
+    "organization": "Grant Hobbs",
+    "description": "Quickly view file history in Fork.",
     "version": "1.0",
     "categories": ["commands"],
     
