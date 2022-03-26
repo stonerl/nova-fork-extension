@@ -4,7 +4,8 @@ This extension provides integration with the [**Fork**](https://git-fork.com) Gi
 
 ## Requirements
 
-This extension requires [Fork](https://git-fork.com) to be installed on your Mac:
+1. Install [Fork](https://git-fork.com)
+2. Install Nova CLI (open Preferences / Tools, and ensure Command Line Tools are installed)
 
 ## Usage
 
