@@ -1,0 +1,48 @@
+{
+  "identifier": "stonerl.fork",
+  "name": "Fork",
+  "organization": "Toni Förster",
+  "description": "Integrates the Fork Git client for browsing commits, file history, and changes.",
+  "version": "1.0.0",
+  "repository": "https://github.com/stonerl/nova-fork-extension",
+  "bugs": "https://github.com/stonerl/nova-fork-extension/issues",
+  "funding": "https://github.com/sponsors/stonerl",
+  "license": "MIT License",
+  "categories": ["commands"],
+
+  "main": "main.js",
+
+  "entitlements": {
+    "filesystem": "readonly",
+    "process": true
+  },
+
+  "activationEvents": ["onWorkspaceContains:.git"],
+
+  "commands": {
+    "editor": [
+      {
+        "title": "Show File History in Fork",
+        "command": "open-in-fork.fileHistory",
+        "when": "openInForkHasGit"
+      }
+    ],
+    "extensions": [
+      {
+        "title": "Open Repository",
+        "command": "open-in-fork.openRepository",
+        "when": "openInForkHasGit"
+      },
+      {
+        "title": "Open Commit View",
+        "command": "open-in-fork.localChanges",
+        "when": "openInForkHasGit"
+      },
+      {
+        "title": "Show All Commits",
+        "command": "open-in-fork.commitHistory",
+        "when": "openInForkHasGit"
+      }
+    ]
+  }
+}
