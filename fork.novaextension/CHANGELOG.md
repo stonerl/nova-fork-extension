@@ -1,4 +1,4 @@
-## 2.0.0 – 2025-05-07
+## 1.0.0 – 2025-05-07
 
 ### Added
 
@@ -10,7 +10,3 @@
 
 - Commands are now only available when the current workspace is a Git repository.
 - Cached the path to the Fork binary.
-
-## 1.0.0 – 2021-03-06
-
-Initial release

@@ -1,4 +1,6 @@
-Provides Nova integration for the [Fork](https://fork.dev) Git client, enabling
+# Fork for Nova
+
+Official Nova extension for the [Fork](https://fork.dev) Git client, enabling
 repository access, commit history, and file change inspection.
 
 ## Requirements
