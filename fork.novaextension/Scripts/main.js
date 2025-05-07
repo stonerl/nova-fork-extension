@@ -9,6 +9,9 @@ function checkGitPresence() {
 }
 
 exports.activate = function () {
+  // Preload Fork path to trigger locate + prompt if missing
+  require('./fork.js').locateFork?.();
+
   // 1) set initial state
   nova.workspace.context.set('isGitRepo', checkGitPresence());
 

@@ -3,15 +3,15 @@ const cache = new Map();
 /**
  * Locate a binary in the system PATH and cache it.
  */
-function locate(command) {
-  if (cache.has(command)) {
-    return Promise.resolve(cache.get(command));
+function locateFork() {
+  if (cache.has('fork')) {
+    return Promise.resolve(cache.get('fork'));
   }
 
   return new Promise((resolve) => {
     const process = new Process('which', {
       shell: true,
-      args: [command],
+      args: ['fork'],
     });
 
     const lines = [];
@@ -23,9 +23,10 @@ function locate(command) {
     process.onDidExit((status) => {
       if (status === 0) {
         const foundAt = lines.join('\n');
-        cache.set(command, foundAt);
+        cache.set('fork', foundAt);
         resolve(foundAt);
       } else {
+        showForkInstructions();
         resolve(undefined);
       }
     });
@@ -38,14 +39,10 @@ function locate(command) {
  * Run the Fork app with the given arguments.
  */
 async function fork(args) {
-  const forkPath = await locate('fork');
+  const forkPath = await locateFork();
+  if (!forkPath) return false;
 
-  if (!forkPath) {
-    showForkInstructions();
-    return;
-  }
-
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const process = new Process(forkPath, {
       args,
       cwd: nova.workspace.path,
@@ -67,9 +64,9 @@ async function fork(args) {
         nova.workspace.showInformativeMessage(
           `${message}\n\n${errLines.join('\n')}`,
         );
-        reject(new Error(message));
+        resolve(false);
       } else {
-        resolve();
+        resolve(true);
       }
     });
 
@@ -81,23 +78,24 @@ async function fork(args) {
  * Show instructions for setting up the Fork app if it’s not found.
  */
 function showForkInstructions() {
-  const instructionsUrl = 'https://fork.dev';
   const lines = [
-    'To use this command, you must install the Fork app.',
+    'To use this extension, you must install the Fork app and its command-line tool.',
     '',
-    'For more information, see:',
-    instructionsUrl,
+    'For more information, see the extension’s Details page:',
   ];
 
   nova.workspace.showActionPanel(
     lines.join('\n'),
     {
-      buttons: ['Download Fork', 'Close'],
+      buttons: ['Open Details', 'Close'],
     },
     (index) => {
-      if (index === 0) nova.openURL(instructionsUrl);
+      if (index === 0) nova.extension.openReadme();
     },
   );
 }
 
-module.exports = fork;
+module.exports = {
+  fork,
+  locateFork,
+};

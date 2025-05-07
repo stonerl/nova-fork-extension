@@ -3,7 +3,7 @@
  * Each command resolves the repo path and invokes the Fork CLI with appropriate arguments.
  */
 
-const fork = require('./fork');
+const { fork } = require('./fork');
 
 const commands = {
   openRepository: () => fork(['open']),
@@ -14,7 +14,8 @@ const commands = {
 
   showFileHistory: async (editor) => {
     const path = nova.workspace.relativizePath(editor.document.path);
-    await fork(['open']);
+    const opened = await fork(['open']);
+    if (!opened) return;
     return fork(['log', '--', path]);
   },
 };
