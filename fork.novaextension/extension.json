@@ -23,25 +23,25 @@
     "editor": [
       {
         "title": "Show File History in Fork",
-        "command": "open-in-fork.fileHistory",
-        "when": "openInForkHasGit"
+        "command": "fork.fileHistory",
+        "when": "isGitRepo"
       }
     ],
     "extensions": [
       {
         "title": "Open Repository",
-        "command": "open-in-fork.openRepository",
-        "when": "openInForkHasGit"
+        "command": "fork.openRepository",
+        "when": "isGitRepo"
       },
       {
         "title": "Open Commit View",
-        "command": "open-in-fork.localChanges",
-        "when": "openInForkHasGit"
+        "command": "fork.localChanges",
+        "when": "isGitRepo"
       },
       {
         "title": "Show All Commits",
-        "command": "open-in-fork.commitHistory",
-        "when": "openInForkHasGit"
+        "command": "fork.commitHistory",
+        "when": "isGitRepo"
       }
     ]
   }

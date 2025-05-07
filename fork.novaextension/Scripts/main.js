@@ -10,28 +10,28 @@ function checkGitPresence() {
 
 exports.activate = function () {
   // 1) set initial state
-  nova.workspace.context.set('openInForkHasGit', checkGitPresence());
+  nova.workspace.context.set('isGitRepo', checkGitPresence());
 
   // 2) watch for .git appearing/disappearing anywhere in the workspace
   gitWatcher = nova.fs.watch(null, () => {
-    nova.workspace.context.set('openInForkHasGit', checkGitPresence());
+    nova.workspace.context.set('isGitRepo', checkGitPresence());
   });
 
-  // 3) register commands (they only light up when openInForkHasGit===true)
+  // 3) register commands (they only light up when isGitRepo===true)
   nova.commands.register(
-    'open-in-fork.fileHistory',
+    'fork.fileHistory',
     async (editor) => await forkCommands.showFileHistory(editor),
   );
   nova.commands.register(
-    'open-in-fork.commitHistory',
+    'fork.commitHistory',
     async () => await forkCommands.showCommitHistory(),
   );
   nova.commands.register(
-    'open-in-fork.localChanges',
+    'fork.localChanges',
     async () => await forkCommands.openCommitView(),
   );
   nova.commands.register(
-    'open-in-fork.openRepository',
+    'fork.openRepository',
     async () => await forkCommands.openRepository(),
   );
 };
