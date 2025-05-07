@@ -1,7 +1,13 @@
 const cache = new Map();
 
 /**
- * Locate a binary in the system PATH and cache it.
+ * Locate the Fork CLI binary in the user's PATH and cache the result.
+ *
+ * Uses the `which` command to find the full path to the `fork` executable.
+ * If found, the result is cached to avoid repeated lookups.
+ * If not found, shows setup instructions and returns undefined.
+ *
+ * @returns {Promise<string | undefined>} The path to the `fork` binary, or undefined if not found.
  */
 function locateFork() {
   if (cache.has('fork')) {
@@ -37,10 +43,19 @@ function locateFork() {
 
 /**
  * Run the Fork app with the given arguments.
+ *
+ * If Fork is not installed, shows setup instructions and returns false.
+ * If Fork is launched for the first time, waits briefly to ensure it is ready
+ * before resolving. Otherwise, executes the command immediately.
+ *
+ * @param {string[]} args - Arguments to pass to the Fork CLI.
+ * @returns {Promise<boolean>} Resolves to true on success, or false if Fork could not be run.
  */
 async function fork(args) {
   const forkPath = await locateFork();
   if (!forkPath) return false;
+
+  const wasRunning = await isForkRunning();
 
   return new Promise((resolve) => {
     const process = new Process(forkPath, {
@@ -58,7 +73,7 @@ async function fork(args) {
       if (data) errLines.push(data.trim());
     });
 
-    process.onDidExit((status) => {
+    process.onDidExit(async (status) => {
       if (status !== 0) {
         const message = 'Could not run the fork utility.';
         nova.workspace.showInformativeMessage(
@@ -66,11 +81,34 @@ async function fork(args) {
         );
         resolve(false);
       } else {
+        if (!wasRunning) {
+          await new Promise((r) => setTimeout(r, 500));
+        }
         resolve(true);
       }
     });
 
     process.start();
+  });
+}
+
+/**
+ * Check if the Fork app is currently running.
+ *
+ * Uses `ps -A` and searches for "Fork.app" in the process list.
+ * Returns true if the app is running, false otherwise.
+ */
+function isForkRunning() {
+  const ps = new Process('/bin/ps', { args: ['-A'], shell: false });
+
+  let output = '';
+  ps.onStdout((data) => (output += data));
+
+  return new Promise((resolve) => {
+    ps.onDidExit(() => {
+      resolve(/\bFork\.app\b/.test(output));
+    });
+    ps.start();
   });
 }
 
