@@ -3,7 +3,7 @@
   "name": "Fork",
   "organization": "Toni Förster",
   "description": "Integrates the Fork Git client for browsing commits, file history, and changes.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "repository": "https://github.com/stonerl/nova-fork-extension",
   "bugs": "https://github.com/stonerl/nova-fork-extension/issues",
   "funding": "https://github.com/sponsors/stonerl",
