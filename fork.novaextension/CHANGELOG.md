@@ -1,3 +1,9 @@
+## 1.0.1 – 2025-05-09
+
+### Changed
+
+- Always activate extension; enable commands only when the workspace is a Git repository.
+
 ## 1.0.0 – 2025-05-07
 
 ### Added
