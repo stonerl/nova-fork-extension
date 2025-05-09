@@ -17,7 +17,7 @@
     "process": true
   },
 
-  "activationEvents": ["onWorkspaceContains:.git"],
+  "activationEvents": ["*"],
 
   "commands": {
     "editor": [

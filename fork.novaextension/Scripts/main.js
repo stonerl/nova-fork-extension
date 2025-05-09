@@ -5,7 +5,7 @@ let gitWatcher = null;
 function checkGitPresence() {
   const root = nova.workspace.path;
   if (!root) return false;
-  return nova.fs.access(`${root}/.git`, nova.fs.F_OK);
+  return nova.fs.access(nova.path.join(root, '.git'), nova.fs.F_OK);
 }
 
 exports.activate = function () {
