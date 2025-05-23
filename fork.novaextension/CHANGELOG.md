@@ -1,3 +1,9 @@
+## 1.0.2 - 2025-05-23
+
+## Changed
+
+- Minor rewording in the `README.md`
+
 ## 1.0.1 – 2025-05-09
 
 ### Changed

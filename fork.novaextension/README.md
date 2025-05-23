@@ -31,10 +31,11 @@ All commands are also available via the Command Palette (⌘⇧P).
 
 ### Keyboard shortcuts
 
-To set keyboard shortcuts for any of the above commands, use Nova’s [Key Bindings](https://help.panic.com/nova/preferences/#key-bindings) feature.
+To set keyboard shortcuts for any of the above commands, use Nova’s
+[Key Bindings](https://help.panic.com/nova/preferences/#key-bindings) feature.
 
 #### Acknowledgements
 
-- The Fork icon is property of Danil Pristupov and used here for integration purposes.
+- The Fork icon is the property of Danil Pristupov and is used with permission.
 - Based on the original [OpenInFork Nova extension](https://github.com/gwhobbs/OpenInFork.novaextension)
   by Gant Hobbs.
